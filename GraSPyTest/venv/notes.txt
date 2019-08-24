@@ -1,0 +1,129 @@
+Different methods to classify our data:
+Bag of edges
+Limitations:
+Ignores there is a graph structure of data.
+Too simple for many questions.
+
+Bag of features
+Most used method. However, most inconclusive method. What do the features really
+represent?
+Ex of feature:
+ _
+|_|
+
+A square could be a feature. (corners are nodes, which are neurons in our
+scenario, and edges are synapses)
+But a triangle could also be a feature!
+ /\
+/__\
+
+Limitations:
+Can be any number of features (infinite). You can say a certain structure of
+neurons to be a feature, but someone else might say another structure is a
+feature. But what do features really represent?
+
+
+Bag of parameters:
+Statistical parametric model of brain network.
+Limitations:
+Less intuitive.
+
+
+ER Model:
+This model shows the probability of an edge existing between any two nodes.
+See the picture "ERModel.png".
+
+DCER Model:
+A more complicated variant of the ER model. This adds some promiscuous variables
+to add the smooth effect that we see on the model. The promiscuous variables
+determines which nodes have the most probability of having the greater number
+of degrees. The degree, in this scenario, is the number of nodes a certain node
+connects to.
+So when you look at the DCER model, the areas that are in dark red mean that
+there is a greater chance that they will have a degree that is greater than
+nodes in a whiter zone.
+
+SBM Model:
+So the t (tow variable) is a 1D matrix containing the location a node is placed
+in the Block diagram.
+
+For example, let us take some black and white nodes. There are 20% chance that
+a white node connects to a white node; 5% chance a black node connects to a
+black node; 55% chance that a white node connects to a black node; and 20%
+chance that a black node connects to a white node.
+
+This would result in the following Block diagram:
+      W        B                (W = White, B = Black)
+W    0.2      0.55
+B    0.2      0.05
+
+Now the tow is a vector (1D matrix) that contains the box value where the node
+is placed. The numbers below illustrate the positions' value.
+      W        B                (W = White, B = Black)
+W     1        2
+B     3        4
+
+So for a white node connected to a white node, this would mean a value of 0
+in the tow vector.
+tow is essentially this:
+[ 1,  --> means node belongs in white/white
+  2,  --> means node belongs in white/black
+  4,  --> means node belongs in black/black
+  4,  --> ...
+  2,
+  1,
+  1,
+  1,
+  3]  --> means node belongs in black/white
+
+UCSBM Model:
+This model is the combination of the degrees with the tow and the box diagram,
+all explained above.
+
+RDPG Model:
+Represents the node's probability of connection with other nodes.
+What we do is that we take the probability a node is placed at a certain position
+(we have to get those values with ASE) and then we multiply that vector by
+its transpose to give the RDPG model.
+
+The reason all those models make a heat map is because all the squares you see
+originally means that there is a connection between node X and Y based on the
+adjacency matrix you provide. If it is dark in the ER, it means there is a
+connection with node X and Y.
+
+ASE (Adjacency Spectral Embedding):
+This is the method used to find the latent positions (probability node is at a
+certain position). It takes a Block diagram (described in SBM model section)
+and transforms that into values of ASE. ASE is essentially a singular value
+decomposition (SVD, described below) of a matrix. That factorization matrix
+that results from SVD will then be used to generate some latent positions.
+Now if you look at ASEResult.png, you will see that it generates a graph for
+all the dimensions of the factorization matrix. The diagonal is used to
+display the values on a certain row (I think...) in a histogram. All the other
+positions are used to display the combination of some dimension with another.
+For example, positions (0,0) and (1,1) are used to display first and second
+dimensions. Position (0,1) is used to display the result of combining the
+first and second dimension together.
+
+Notice how position (0,1) is only two lines. It might be a good guess to say
+that it is because the graph in dimension 2 only has high values at the
+extremities of the histogram, which makes two lines or two clusters in all the
+coordinate involving dimension 2.
+
+Also important: stuff you do not remember
+What is an eigenvalue?
+An eigenvalue, also called characteristic root, is a scalar (a simple number)
+that will multiply a matrix by a certain value.
+For example, if x is a matrix, then 3x means that 3 is the eigenvalue.
+
+What is an eigenvector?
+An eigenvector is a 1D matrix that does a linear transformation.
+
+What is singular value decomposition (SVD)?
+SVD is the factorization of a matrix using eigenvalues and eigenvectors. In
+other words, factorization by common multiples that gives us a common scalar
+for all data inside the matrix, or factorization by common multiples by rows/
+columns of the matrix. Also, it uses a unit matrix (the classic diagonal of
+ones) to do the factorization.
+
+Go to neurodata.io for more explanations. Find GraSPy's documentation.

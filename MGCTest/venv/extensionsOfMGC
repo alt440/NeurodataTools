@@ -1,0 +1,24 @@
+If you want to do other stuff relating to MGC, you can look into MGC-X. It identifies similarities using time series.
+In other words, it takes different functions with random curves, and superposes them. Then, you set the starting point
+of the other functions to set the best match with the first function.
+
+For example: (function 1)
+  /
+ /
+/
+
+(function 2 - starts at time 1, which is the reason of the additional space at bottom)
+     /
+  --/
+ /
+
+Now superpose both gives us something like this:
+  /  /
+ /--/
+//
+
+The best match would be by having a time lag of -1 on the second function, so both functions' starting points can overlap.
+
+OTHER NOTES
+Remember MGC is an advancement on the simple distance correlation function (dcorr), which we take the distance between
+the points to determine if there is a relation. dcorr cannot see when there are 2D relationships, like a spiral relationship.

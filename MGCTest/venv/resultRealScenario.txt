@@ -1,0 +1,11 @@
+Use results such as test_statistic and optimal_scale, with caution!
+  warnings.warn("The p-value is greater than 0.05, implying that the results are not statistically significant.\n" +
+MGC test statistic: -0.008140982231946415
+P Value: 0.6730000000000005
+
+
+(Note: It was supposed to give something like this, since my data was totally random)
+This above means that my data is too much different (a 67.3% difference
+overall between them) so there is no pattern that can be determined.
+Also, the value of MGC is very close to 0, which suggests that there is no
+relation. A value of 0.2, however, might suggest a relationship.

@@ -1,0 +1,17 @@
+So this graph is principally divided in 4 sections: K, P, I, O. As the slides 
+of their work outlines, these are the four types of neurons. I could not find
+it through wikipedia this way, but here are the actual names of the neurons:
+-Kenyon cell (K)
+-Mushroom body input neuron (I) --> believe this is specific to mushroom, but
+there are some for other living entities.
+-Output neuron (O)
+-Mushroom body projection neuron (P) --> same idea as description for I above
+
+The graph is giving us the probability a connection we choose is connection X
+and X neuron.
+For example, all the red spots in the K,K zone of the graph outlines the high
+probability that a randomly chosen connection connects a K neuron to another K
+neuron (or Kenyon cell).
+Same principle applies for the other categories. If you look under I column 
+intersecting with the O row, then the number of red points show the 
+probability that there is a connection from I to O neuron.

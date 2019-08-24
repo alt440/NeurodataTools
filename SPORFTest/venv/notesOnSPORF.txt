@@ -1,0 +1,45 @@
+Forest classification
+1D linear two way classification: try splitting after each point and see which split corresponds better to your data.
+1D Decision tree: Do multiple splits at once. Once you do a split, you look for other splits you can do inside both of the
+sample groups that you have just created.
+For ex:  - - - - - - - - - -   --> original set
+         - - - - - | - - - - -  --> adding a split (creates two sample groups. Left group has 5 members)
+         - - | - - - | - - - - -  --> create a new sample based on the left sample group of 5 members. Now, there is
+                                      a left-left sample group of 2 members, and a left-right sample group of 3 members
+
+Random forest 1D : do your splits, and from the group samples created, do trees.
+
+A 1D (1 dimension) has only 1 classifying factor. The fact that it is one dimensional is limiting. What about data that
+depends on two values? (height and weight)
+
+Now, if you put these methods in 2D (2 dimensions), we can separate with horizontal and vertical lines. This means you can have
+bizarre separations, but they must all be composed of vertical or horizontal lines.
+
+The Random Forest in 2D is the most precise classification. This is because it also includes darker and lighter colors
+to express where there is a greater probability of a certain node belonging to a certain group.
+
+Forest-RC adds some diagonal lines to the mix.
+
+RF - Random Forests
+CCF - Canonical correlation forest
+RR RF - Random Rotation Random Forest
+CNN - Convolutional neural networks
+MF - Manifold forests
+
+Purity score function: Identifies the quality of the classification process. So, if we have three clusters, and three
+types of data: square, triangle, and diamond. Those 3 clusters each have 5 items.
+Cluster 1 has 3 diamond and 2 triangle.
+Cluster 2 has 5 squares.
+Cluster 3 has 1 square and 4 triangles.
+
+So, the purity score for this would be 1/ total nb elements * (sum of elements having majority in cluster)
+(1 / 15) * (3 + 5 + 4) = (12/15)
+
+Geodesic recall at k = 50 means: which ones of the 50 evaluated nearest neighbors are actually the nearest neighbors?
+I believe this is because we have a third/fourth/... dimensions so the nearest neighbor evaluated might not actually
+be the right one.
+
+Confusion matrix: Measures the quality of the classification.
+Here are the inputs in the confusion matrix:
+[ [ true positives,  false negatives],
+  [ false positives, true negatives] ]
